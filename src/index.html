@@ -1,0 +1,836 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./output.css" rel="stylesheet">
+    <title>Tracking Sholat Taraweh</title>
+    <style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .animate-fade-in-left {
+            animation: fadeInLeft 1s ease-out 0.5s;
+            animation-fill-mode: backwards;
+        }
+
+        @keyframes blob {
+            0% {
+                transform: translate(0px, 0px) scale(1);
+            }
+
+            33% {
+                transform: translate(30px, -50px) scale(1.1);
+            }
+
+            66% {
+                transform: translate(-20px, 20px) scale(0.9);
+            }
+
+            100% {
+                transform: translate(0px, 0px) scale(1);
+            }
+        }
+
+        .animate-blob {
+            animation: blob 7s infinite;
+        }
+
+        .animation-delay-2000 {
+            animation-delay: 2s;
+        }
+
+        .animation-delay-4000 {
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="font-sans text-gray-900">
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full bg-blue-900/95 backdrop-blur-sm text-white shadow-lg z-50">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <a href="#" class="text-xl font-bold flex items-center space-x-2 group">
+                <svg class="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="group-hover:text-yellow-400 transition-colors">Tracking Taraweh</span>
+            </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <div class="flex items-center space-x-6">
+                    <a href="#hero" class="hover:text-yellow-400 transition-colors relative group">
+                        Beranda
+                        <span
+                            class="absolute inset-x-0 bottom-0 h-0.5 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                    </a>
+                    <a href="#fitur" class="hover:text-yellow-400 transition-colors relative group">
+                        Fitur
+                        <span
+                            class="absolute inset-x-0 bottom-0 h-0.5 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                    </a>
+                    <a href="#manfaat" class="hover:text-yellow-400 transition-colors relative group">
+                        Manfaat
+                        <span
+                            class="absolute inset-x-0 bottom-0 h-0.5 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                    </a>
+                    <a href="#testimoni" class="hover:text-yellow-400 transition-colors relative group">
+                        Testimoni
+                        <span
+                            class="absolute inset-x-0 bottom-0 h-0.5 bg-yellow-400 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                    </a>
+                </div>
+                <button
+                    class="bg-yellow-400 text-blue-900 px-6 py-2.5 rounded-lg font-semibold hover:bg-yellow-500 transform hover:scale-105 transition-all duration-300 shadow-md">
+                    Mulai Sekarang
+                </button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button class="mobile-menu-button p-2 rounded-lg hover:bg-blue-800 transition-colors" aria-label="Menu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-16 6h16"></path>
+                    </svg>
+                </button>
+
+                <!-- Mobile Menu Panel -->
+                <div
+                    class="mobile-menu hidden absolute top-full left-0 right-0 bg-blue-900/95 backdrop-blur-sm mt-2 p-4 rounded-b-lg shadow-lg">
+                    <div class="flex flex-col space-y-4">
+                        <a href="#hero"
+                            class="hover:text-yellow-400 transition-colors py-2 px-4 hover:bg-blue-800 rounded">Beranda</a>
+                        <a href="#fitur"
+                            class="hover:text-yellow-400 transition-colors py-2 px-4 hover:bg-blue-800 rounded">Fitur</a>
+                        <a href="#manfaat"
+                            class="hover:text-yellow-400 transition-colors py-2 px-4 hover:bg-blue-800 rounded">Manfaat</a>
+                        <a href="#testimoni"
+                            class="hover:text-yellow-400 transition-colors py-2 px-4 hover:bg-blue-800 rounded">Testimoni</a>
+                        <button
+                            class="bg-yellow-400 text-blue-900 px-6 py-2.5 rounded-lg font-semibold hover:bg-yellow-500 transition-colors">
+                            Mulai Sekarang
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="pt-16 bg-gradient-to-b from-gray-50 to-gray-100">
+        <div class="container mx-auto px-4 py-12">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-12">
+                <!-- Text Content -->
+                <div class="md:w-1/2 space-y-6">
+                    <h1 class="text-4xl md:text-5xl font-bold text-blue-900">
+                        Pantau Ibadah <span class="text-yellow-400">Taraweh</span> dengan Mudah
+                    </h1>
+                    <p class="text-gray-600 text-lg">
+                        Catat dan pantau ibadah taraweh Anda selama Ramadan dengan mudah. Tetap konsisten dan
+                        termotivasi dalam beribadah.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#download"
+                            class="inline-flex items-center justify-center px-6 py-3 bg-blue-900 text-white font-medium rounded-lg hover:bg-blue-800 transition-colors">
+                            Mulai Sekarang
+                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Simple Stats -->
+                    <div class="flex items-center gap-8 pt-4">
+                        <div>
+                            <p class="text-2xl font-bold text-blue-900">10K+</p>
+                            <p class="text-gray-600">Pengguna Aktif</p>
+                        </div>
+                        <div class="h-8 w-px bg-gray-300"></div>
+                        <div>
+                            <p class="text-2xl font-bold text-blue-900">4.8/5</p>
+                            <p class="text-gray-600">Rating App</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Image Content -->
+                <div class="md:w-1/2">
+                    <div class="relative">
+                        <img src="https://img.freepik.com/free-vector/muslim-family-traditional-clothes-praying_3446-626.jpg"
+                            alt="Ilustrasi Sholat Taraweh" class="w-full h-auto rounded-lg shadow-md" loading="lazy">
+                        <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-lg">
+                            <span class="text-blue-900 font-medium">Ramadan 1445H</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Fitur -->
+    <section id="fitur" class="py-16 bg-white overflow-hidden relative">
+        <!-- Decorative Elements -->
+        <div
+            class="absolute top-0 left-0 w-64 h-64 bg-yellow-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob">
+        </div>
+        <div
+            class="absolute top-0 right-0 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000">
+        </div>
+
+        <div class="container mx-auto px-4 relative">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span
+                    class="bg-blue-100 text-blue-900 text-sm font-medium px-4 py-1.5 rounded-full mb-4 inline-block">Fitur
+                    Unggulan</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
+                    Fitur yang Mempermudah <span class="text-yellow-400">Ibadah Tarawehmu!</span>
+                </h2>
+                <p class="text-gray-600">Nikmati berbagai fitur yang dirancang khusus untuk meningkatkan kualitas ibadah
+                    taraweh Anda</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12">
+                <!-- Fitur 1 -->
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-yellow-100 rounded-bl-full opacity-50 -mr-8 -mt-8">
+                    </div>
+                    <div class="relative">
+                        <div
+                            class="w-16 h-16 bg-blue-900 rounded-2xl flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-3 group-hover:text-yellow-400 transition-colors">
+                            Pencatatan Otomatis
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Simpan kehadiran dengan mudah dan cepat setiap selesai sholat taraweh. Sistem pencatatan
+                            yang efisien.
+                        </p>
+                        <div class="mt-6 flex items-center text-sm text-blue-900">
+                            <span class="font-medium">Pelajari lebih lanjut</span>
+                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fitur 2 -->
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-yellow-100 rounded-bl-full opacity-50 -mr-8 -mt-8">
+                    </div>
+                    <div class="relative">
+                        <div
+                            class="w-16 h-16 bg-blue-900 rounded-2xl flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-3 group-hover:text-yellow-400 transition-colors">
+                            Statistik Progress
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Pantau perkembangan ibadah tarawehmu dengan visualisasi yang informatif
+                        </p>
+                        <div class="mt-6 flex items-center text-sm text-blue-900">
+                            <span class="font-medium">Pelajari lebih lanjut</span>
+                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fitur 3 -->
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-yellow-100 rounded-bl-full opacity-50 -mr-8 -mt-8">
+                    </div>
+                    <div class="relative">
+                        <div
+                            class="w-16 h-16 bg-blue-900 rounded-2xl flex items-center justify-center mb-6 transform group-hover:scale-110 transition-transform duration-300">
+                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-blue-900 mb-3 group-hover:text-yellow-400 transition-colors">
+                            Pengingat Harian
+                        </h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Dapatkan notifikasi tepat waktu agar tidak melewatkan sholat taraweh
+                        </p>
+                        <div class="mt-6 flex items-center text-sm text-blue-900">
+                            <span class="font-medium">Pelajari lebih lanjut</span>
+                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 5l7 7-7 7" />
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Manfaat -->
+    <section id="manfaat" class="py-16 bg-gradient-to-b from-gray-50 to-gray-100 relative overflow-hidden">
+        <!-- Decorative Elements -->
+        <div
+            class="absolute -bottom-16 -right-16 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob">
+        </div>
+        <div
+            class="absolute -top-16 -left-16 w-64 h-64 bg-yellow-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000">
+        </div>
+
+        <div class="container mx-auto px-4 relative">
+            <div class="text-center mb-16">
+                <span
+                    class="bg-blue-100 text-blue-900 text-sm font-medium px-4 py-1.5 rounded-full mb-4 inline-block">Manfaat
+                    Utama</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
+                    Kenapa Harus Pakai <span class="text-yellow-400">Tracking Sholat Taraweh?</span>
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Aplikasi yang dirancang khusus untuk membantu Anda meningkatkan konsistensi dalam menjalankan ibadah
+                    taraweh selama Ramadan
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 lg:gap-12">
+                <!-- Manfaat 1 -->
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group transform hover:-translate-y-1">
+                    <div
+                        class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-900 transition-colors duration-300">
+                        <svg class="w-7 h-7 text-blue-900 group-hover:text-white transition-colors duration-300"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-4 group-hover:text-yellow-400 transition-colors">
+                        Meningkatkan Konsistensi
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Membantu Anda membangun kebiasaan baik dengan tracking yang teratur dan mudah. Pantau progress
+                        harian Anda.
+                    </p>
+                    <div class="mt-6 flex items-center text-sm text-blue-900">
+                        <span class="font-medium">Selengkapnya</span>
+                        <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Manfaat 2 -->
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group transform hover:-translate-y-1">
+                    <div
+                        class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-900 transition-colors duration-300">
+                        <svg class="w-7 h-7 text-blue-900 group-hover:text-white transition-colors duration-300"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-4 group-hover:text-yellow-400 transition-colors">
+                        Motivasi Lebih Kuat
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Visualisasi progress memberikan semangat tambahan untuk terus istiqomah
+                    </p>
+                    <div class="mt-6 flex items-center text-sm text-blue-900">
+                        <span class="font-medium">Selengkapnya</span>
+                        <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Manfaat 3 -->
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group transform hover:-translate-y-1">
+                    <div
+                        class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center mb-6 group-hover:bg-blue-900 transition-colors duration-300">
+                        <svg class="w-7 h-7 text-blue-900 group-hover:text-white transition-colors duration-300"
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                            </path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-blue-900 mb-4 group-hover:text-yellow-400 transition-colors">
+                        Mudah Digunakan
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Antarmuka sederhana yang dapat digunakan oleh semua kalangan usia
+                    </p>
+                    <div class="mt-6 flex items-center text-sm text-blue-900">
+                        <span class="font-medium">Selengkapnya</span>
+                        <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-2 transition-transform" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Testimoni -->
+    <section id="testimoni" class="py-16 bg-gradient-to-b from-white to-gray-50 relative overflow-hidden">
+        <!-- Decorative Elements -->
+        <div
+            class="absolute top-0 right-0 w-64 h-64 bg-yellow-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 w-64 h-64 bg-blue-100 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000">
+        </div>
+
+        <div class="container mx-auto px-4 relative">
+            <div class="text-center mb-16">
+                <span
+                    class="bg-blue-100 text-blue-900 text-sm font-medium px-4 py-1.5 rounded-full mb-4 inline-block">Testimoni
+                    Pengguna</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-blue-900 mb-4">
+                    Apa Kata Mereka yang Sudah <span class="text-yellow-400">Menggunakan?</span>
+                </h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">
+                    Dengarkan pengalaman mereka yang telah merasakan manfaat menggunakan aplikasi Tracking Sholat
+                    Taraweh
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimoni 1 -->
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group transform hover:-translate-y-1">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Ahmad Fadhil"
+                            class="w-16 h-16 rounded-full object-cover mr-4 ring-4 ring-blue-100">
+                        <div>
+                            <h4 class="font-bold text-lg text-blue-900 group-hover:text-yellow-400 transition-colors">
+                                Ahmad Fadhil</h4>
+                            <p class="text-gray-600 text-sm">Mahasiswa</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex text-yellow-400 mb-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <!-- Repeat star 4 more times -->
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">
+                        "Alhamdulillah, dengan aplikasi ini saya jadi lebih semangat untuk taraweh setiap malam. Fitur
+                        pengingat dan tracking sangat membantu."
+                    </p>
+                    <div class="mt-6 flex items-center justify-between">
+                        <span class="text-sm text-gray-500">2 minggu yang lalu</span>
+                        <div class="flex items-center text-blue-900">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                            </svg>
+                            <span class="text-sm font-medium">Membantu</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimoni 2 -->
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group transform hover:-translate-y-1">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Siti Aminah"
+                            class="w-16 h-16 rounded-full object-cover mr-4 ring-4 ring-blue-100">
+                        <div>
+                            <h4 class="font-bold text-lg text-blue-900 group-hover:text-yellow-400 transition-colors">
+                                Siti Aminah</h4>
+                            <p class="text-gray-600 text-sm">Ibu Rumah Tangga</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex text-yellow-400 mb-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <!-- Repeat star 4 more times -->
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">
+                        "Sangat membantu untuk memantau ibadah taraweh saya dan keluarga."
+                    </p>
+                    <div class="mt-6 flex items-center justify-between">
+                        <span class="text-sm text-gray-500">2 minggu yang lalu</span>
+                        <div class="flex items-center text-blue-900">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                            </svg>
+                            <span class="text-sm font-medium">Membantu</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimoni 3 -->
+                <div
+                    class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group transform hover:-translate-y-1">
+                    <div class="flex items-center mb-6">
+                        <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="Rizki Ramadhan"
+                            class="w-16 h-16 rounded-full object-cover mr-4 ring-4 ring-blue-100">
+                        <div>
+                            <h4 class="font-bold text-lg text-blue-900 group-hover:text-yellow-400 transition-colors">
+                                Rizki Ramadhan</h4>
+                            <p class="text-gray-600 text-sm">Karyawan</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="flex text-yellow-400 mb-2">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                                <path
+                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                            </svg>
+                            <!-- Repeat star 4 more times -->
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">
+                        "Fitur pengingat sangat membantu agar tidak ketinggalan waktu taraweh."
+                    </p>
+                    <div class="mt-6 flex items-center justify-between">
+                        <span class="text-sm text-gray-500">2 minggu yang lalu</span>
+                        <div class="flex items-center text-blue-900">
+                            <svg class="w-5 h-5 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5" />
+                            </svg>
+                            <span class="text-sm font-medium">Membantu</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="py-16 bg-blue-900 text-white relative overflow-hidden">
+        <!-- Decorative Elements -->
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/mosque.png')] opacity-5">
+        </div>
+
+        <div class="container mx-auto px-4 relative">
+            <div class="text-center mb-12">
+                <span
+                    class="bg-white/10 text-yellow-400 text-sm font-medium px-4 py-1.5 rounded-full mb-4 inline-block">Daftar
+                    Sekarang</span>
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                    Siap Memulai Perjalanan <span class="text-yellow-400">Ibadahmu?</span>
+                </h2>
+                <p class="text-gray-300">Isi form di bawah ini dan kami akan menghubungi Anda segera</p>
+            </div>
+
+            <div class="max-w-5xl mx-auto bg-white rounded-2xl p-8 shadow-xl">
+                <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="md:col-span-2">
+                        <label class="block text-gray-700 text-sm font-medium mb-2" for="nama">Nama Lengkap</label>
+                        <input type="text" id="nama"
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                            placeholder="Masukkan nama lengkap">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-2" for="email">Email</label>
+                        <input type="email" id="email"
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                            placeholder="nama@email.com">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 text-sm font-medium mb-2" for="telepon">Nomor Telepon</label>
+                        <input type="tel" id="telepon"
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                            placeholder="08xxxxxxxxxx">
+                    </div>
+
+                    <div class="md:col-span-2">
+                        <label class="block text-gray-700 text-sm font-medium mb-2" for="pesan">Pesan (Opsional)</label>
+                        <textarea id="pesan" rows="4"
+                            class="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+                            placeholder="Tulis pesan Anda di sini..."></textarea>
+                    </div>
+
+                    <div class="md:col-span-2">
+                        <button type="submit"
+                            class="w-full bg-blue-900 text-white py-4 px-6 rounded-lg font-semibold hover:bg-blue-800 transform hover:scale-[1.01] transition-all duration-300 flex items-center justify-center group">
+                            Daftar Sekarang
+                            <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-b from-gray-900 to-gray-950 text-white py-16 relative overflow-hidden">
+        <!-- Decorative Elements -->
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/mosque.png')] opacity-5">
+        </div>
+
+        <div class="container mx-auto px-4 relative">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12 md:gap-8">
+                <!-- Logo & Deskripsi -->
+                <div class="col-span-1 sm:col-span-2">
+                    <div class="flex items-center space-x-3 mb-6 group">
+                        <svg class="w-8 h-8 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <h3 class="text-xl font-bold group-hover:text-yellow-400 transition-colors">Tracking Sholat
+                            Taraweh</h3>
+                    </div>
+                    <p class="text-gray-400 leading-relaxed">Platform digital untuk membantu Anda mencatat dan memantau
+                        ibadah taraweh selama Ramadan.</p>
+
+                    <!-- Newsletter -->
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-4">Berlangganan Newsletter</h4>
+                        <form class="flex gap-2">
+                            <input type="email" placeholder="Email Anda"
+                                class="flex-1 px-4 py-2 bg-gray-800 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none transition-all">
+                            <button
+                                class="px-4 py-2 bg-yellow-400 text-gray-900 rounded-lg hover:bg-yellow-500 transition-colors">
+                                Daftar
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Menu -->
+                <div>
+                    <h4 class="font-bold mb-6 text-lg">Menu Utama</h4>
+                    <ul class="space-y-3">
+                        <li>
+                            <a href="#hero" class="text-gray-400 hover:text-white flex items-center group">
+                                <span
+                                    class="w-1.5 h-1.5 bg-yellow-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                Beranda
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#fitur" class="text-gray-400 hover:text-white flex items-center group">
+                                <span
+                                    class="w-1.5 h-1.5 bg-yellow-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                Fitur
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#manfaat" class="text-gray-400 hover:text-white flex items-center group">
+                                <span
+                                    class="w-1.5 h-1.5 bg-yellow-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                Manfaat
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#testimoni" class="text-gray-400 hover:text-white flex items-center group">
+                                <span
+                                    class="w-1.5 h-1.5 bg-yellow-400 rounded-full mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></span>
+                                Testimoni
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Sosial Media -->
+                <div>
+                    <h4 class="font-bold mb-6 text-lg">Ikuti Kami</h4>
+                    <div class="flex flex-col space-y-4">
+                        <a href="#" class="text-gray-400 hover:text-white flex items-center group">
+                            <span
+                                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3 group-hover:bg-yellow-400 transition-colors">
+                                <svg class="w-5 h-5 group-hover:text-gray-900 transition-colors" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                </svg>
+                            </span>
+                            Instagram
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white flex items-center group">
+                            <span
+                                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3 group-hover:bg-yellow-400 transition-colors">
+                                <svg class="w-5 h-5 group-hover:text-gray-900 transition-colors" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z" />
+                                </svg>
+                            </span>
+                            Twitter
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white flex items-center group">
+                            <span
+                                class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center mr-3 group-hover:bg-yellow-400 transition-colors">
+                                <svg class="w-5 h-5 group-hover:text-gray-900 transition-colors" fill="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                                </svg>
+                            </span>
+                            Facebook
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 text-sm">© 2025 Tracking Sholat Taraweh. Hak Cipta Dilindungi.</p>
+                    <div class="flex space-x-6 mt-4 md:mt-0">
+                        <a href="#" class="text-gray-400 hover:text-white text-sm">Kebijakan Privasi</a>
+                        <a href="#" class="text-gray-400 hover:text-white text-sm">Syarat & Ketentuan</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop"
+        class="fixed bottom-8 right-8 bg-blue-900 text-white p-3 rounded-full shadow-lg opacity-0 invisible transition-all duration-300 hover:bg-blue-800 group">
+        <svg class="w-6 h-6 transform group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor"
+            viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.querySelector('.mobile-menu-button');
+        const mobileMenu = document.querySelector('.mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!mobileMenuButton.contains(e.target) && !mobileMenu.contains(e.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const navbarHeight = document.querySelector('#navbar').offsetHeight;
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+
+                // Close mobile menu after clicking
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.add('opacity-0', 'invisible');
+                backToTopButton.classList.remove('opacity-100', 'visible');
+            }
+        });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
+</body>
+
+</html>
